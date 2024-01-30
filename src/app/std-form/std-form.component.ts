@@ -27,7 +27,7 @@ export class StdFormComponent implements OnInit {
     if(!Object.values(obj).includes("")){
       console.log(obj);
       this.StdData.emit(obj);
-     
+      
 
     }
    
