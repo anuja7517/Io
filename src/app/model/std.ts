@@ -4,3 +4,11 @@ export interface Istd {
     email: string;
     contact: number;
 }
+
+export type  Icard ="product" | "Catlog"
+ 
+export interface IproCat{
+    pName : string,
+    pDescription: string,
+    pCatg : Icard
+}

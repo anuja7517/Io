@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Istd } from './model/std';
+import { Icard, IproCat, Istd } from './model/std';
 
 
 @Component({
@@ -13,16 +13,34 @@ export class AppComponent implements OnInit{
   msgFromChild ! :string;   // ui show
   skillsArray : Array<string> = ["HTML 5","CSS 3"];
  
-
+  @ViewChild("todo") todoref!: ElementRef  
 
   studentsArr : Array<Istd> =[{
     fname : "madu",
     lname : 'bhosle',
     email : 'bhosle@madu.com',
     contact : 1478523690
-  }]
+  }];
 
-@ViewChild("todo") todoref!: ElementRef  
+  pName  : string = '';
+  pDescription  : string = '';
+
+prodArr : Array<IproCat> = [
+  {
+    pName :"vivo",
+    pDescription: "oppo",
+    pCatg : "product"
+  }
+  // {
+  //   pName :"redmi 5G",
+  //   pDescription: " one + ",
+  //   pCatg  : "Catlog"
+  // }
+
+
+]
+
+
   constructor(){
 
   }
@@ -72,8 +90,38 @@ export class AppComponent implements OnInit{
 getStdData(stdObj : Istd){
   console.log(stdObj);
   this.studentsArr.push(stdObj)
+ 
   
 }
+addProduct(card1:Icard){
+ let obj :IproCat = {
+  pName : this.pName,
+  pDescription: this.pDescription,
+  pCatg :card1
+
+ }
+ if(!Object.values(obj).includes("")){
+  this.prodArr.push(obj);
+  console.log(obj);
+  this.pDescription = '';
+  this.pName = '';
+ }
+
+ 
+}
+// addCatlog(){
+//   let obj : IproCat = {
+//    pName : this.pName,
+//    pDescription: this.pDescription,
+//    pCatg : "Catlog"
+//   }
+//   if(!Object.values(obj).includes("")){
+    
+//     console.log(obj);
+//     this.pDescription = '';
+//     this.pName = '';
+//    }
+// }
 
 }
 
